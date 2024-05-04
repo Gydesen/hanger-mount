@@ -1,0 +1,23 @@
+{
+    "parameterSets": {
+        "USW-Flex-Mini": {
+            "depth": "70",
+            "ear": "20",
+            "height": "21",
+            "screw": "4",
+            "screwoffset": "15",
+            "thick": "5",
+            "width": "107"
+        },
+        "UXG-Max": {
+            "depth": "128",
+            "ear": "20",
+            "height": "30",
+            "screw": "4",
+            "screwoffset": "15",
+            "thick": "5",
+            "width": "142"
+        }
+    },
+    "fileFormatVersion": "1"
+}
