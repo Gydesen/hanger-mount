@@ -5,14 +5,36 @@ height = 50;
 
 thick = 5;
 ear = 20;
-screw = 2;
+screw = 5;          // Screwhole diameter
 screwoffset = 15;
 
+bventOffset=8;
+bventDepth=8;
 
+tol=0.2;
 
 // Bottom
+difference(){
+   
 translate([ear+thick,0,0])
-  cube([width,depth,thick]);
+    cube([width,depth,thick]);
+
+btmOffset=ear+thick;
+    
+for (x=[10:5:width-10]){
+     for (y=[10:5:depth-10]){
+       translate([x+btmOffset,y,-tol/2]){
+           //cube(thick+tol);
+          cube([4,4,thick+tol]);
+         //cylinder(r=4,h=thick+tol,$fn=30);
+           
+         
+       }
+     }
+   }
+    
+}
+
 
 // Left Side
 translate([ear,0,0])
@@ -27,9 +49,9 @@ difference()
     translate([0,0,height])
         cube([ear+thick,depth,thick]);
     translate([0.5*ear,screwoffset,height])
-        cylinder(thick, screw, screw);
+        cylinder(thick+tol, d=screw, $fn=20);
     translate([0.5*ear,depth-screwoffset,height])
-        cylinder(thick, screw, screw);    
+        cylinder(thick+tol, d=screw, $fn=20);    
 }
 
 // Right Ear
@@ -38,9 +60,9 @@ difference()
     translate([width+ear+thick,0,height])
         cube([ear+thick,depth,thick]);
     translate([1.5*ear+width+2*thick,screwoffset,height])
-        cylinder(thick, screw, screw);
+        cylinder(thick+tol, d=screw, $fn=20);
     translate([1.5*ear+width+2*thick,depth-screwoffset,height])
-        cylinder(thick, screw, screw);  
+        cylinder(thick+tol, d=screw, $fn=20);  
 }
 
 
@@ -72,9 +94,22 @@ translate([width+2*ear+2*thick,depth-thick,height])
 
 
 
+// Bottom
+if(0){
+    
+difference()
+{
+    translate([ear+thick,0,0])
+        cube([width,depth,thick]);
+    translate([ear+thick+bventOffset,bventOffset,0])
+        cube([width-2*bventOffset,bventDepth,thick]);
+    translate([ear+thick+bventOffset,2*bventOffset+bventDepth,0])
+        cube([width-2*bventOffset,bventDepth,thick]); 
+    translate([ear+thick+bventOffset,3*bventOffset+2*bventDepth,0])
+        cube([width-2*bventOffset,bventDepth,thick]);    
+}
 
-
-
+}
 
 
 
